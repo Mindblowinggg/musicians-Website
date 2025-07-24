@@ -1,6 +1,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');
-.navlogo{
-   font-family: "Rock Salt", cursive;
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  position: fixed;
+  width: 100%;
+  background-color: rgba(54, 52, 52, 0.864);
+  backdrop-filter: blur(5px);
+
+}
+
+
+
+.navlogo {
+  font-family: "Rock Salt", cursive;
   font-weight: 900;
   font-style: normal;
+  color: #E97F18;
+}
+
+.menuicon {
+  height: 40px;
+  width: 40px;
+  color: #E97F18;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 }
