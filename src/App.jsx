@@ -1,3 +1,5 @@
+import Category from "./components/categoty/category";
+import Checkbox from "./components/checkbox";
 import Hero from "./components/hero/hero";
 import Navbar from "./components/navbar/navbar";
 
@@ -6,6 +8,7 @@ function App() {
     <div>
       <Navbar/>
       <Hero/>
+      <Category/>
     </div>
   )
 }
