@@ -5,7 +5,7 @@ const Checkbox = ({ name, label }) => {
   return (
     <StyledWrapper>
       <div className="checkbox-wrapper">
-        <input defaultChecked type="checkbox" className="check" id={name} />
+        <input type="checkbox" className="check" id={name} />
         <label htmlFor={name} className="label">
           <svg width={45} height={45} viewBox="0 0 95 95">
             <rect
