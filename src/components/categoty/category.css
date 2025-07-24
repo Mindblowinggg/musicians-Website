@@ -40,7 +40,7 @@
 }
 
 .insidediv>h2 {
-  user-select: none;
+  user-select: none;  
   color: white;
   font-size: 20px;
   font-family: "rock salt";
@@ -74,7 +74,7 @@ button {
   font-weight: 500;
   position: relative;
   z-index: 100;
-  animation: shake3856 0.3s linear infinite both;
+  animation: shake3856 0.35s linear infinite both;
 }
 
 
