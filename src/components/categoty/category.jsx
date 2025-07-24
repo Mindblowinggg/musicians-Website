@@ -44,7 +44,9 @@ const Category = () => {
           />
         ))}
       </div>
+      
     </div>
+
     </div>
   );
 };

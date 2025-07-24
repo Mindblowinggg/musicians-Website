@@ -42,7 +42,7 @@
   filter: drop-shadow(8px 8px 1px rgba(0, 0, 0, 0.7));
 }
 
-/* From Uiverse.io by mi-series */
+
 .btn {
   position: absolute;
   z-index: 100;
@@ -91,13 +91,13 @@
 
 @keyframes pulse {
   0% {
-    transform: translateX(-50%) scale(1); /* नॉर्मल साइज़ */
+    transform: translateX(-50%) scale(1); 
   }
   50% {
-    transform: translateX(-50%) scale(1.06); /* थोड़ा बड़ा करें (जैसे टैप हो रहा हो) */
-    box-shadow: 10px 10px 15px rgba(0, 0, 0, .2); /* शैडो भी बढ़ा सकते हैं */
+    transform: translateX(-50%) scale(1.06); 
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, .2); 
   }
   100% {
-    transform: translateX(-50%) scale(1); /* नॉर्मल साइज़ पर वापस */
+    transform: translateX(-50%) scale(1); 
   }
 }
