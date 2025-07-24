@@ -22,10 +22,9 @@ const Category = () => {
 
   return (
     <div className="categorydiv">
-      <h2 >Find Musicians</h2>
-
+    <div className="insidediv">
       <h2>Select Instruments</h2>
-      <div className=" checkboxes flex  flex-wrap gap-3 p-6 justify-center items-center border rounded-md">
+      <div className=" checkboxes">
         {instrumentsList.map((instrument) => (
           <Checkbox
             key={instrument.name}
@@ -36,7 +35,7 @@ const Category = () => {
       </div>
 
       <h2>Select Location</h2>
-      <div className=" checkboxes flex flex-wrap gap-3 p-6 justify-center items-center border rounded-md">
+      <div className=" checkboxes">
         {locationsList.map((instrument) => (
           <Checkbox
             key={instrument.name}
@@ -45,6 +44,7 @@ const Category = () => {
           />
         ))}
       </div>
+    </div>
     </div>
   );
 };

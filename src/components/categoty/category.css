@@ -1,10 +1,12 @@
 .categorydiv {
-  padding: 0px 20px;
-  padding-top: 90px;
+  padding-top: 50px;
+background-image: url("/guitarimg.jpg");
   height: 100vh;
-  background-image: url("/public/categoryimg.jpg");
   background-size: cover;
-  &::before {
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  &::before { 
     content: '';
     position: absolute;
     top: 0;
@@ -12,17 +14,26 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1;
+    z-index: 10;
   }
 }
 
-.checkboxes {
-  background-color: white;
-  position: relative;
-  z-index: 100;
+.insidediv{
+  padding: 20px;
+  font-size: 12px;
 }
 
-.categorydiv>h2{
+.checkboxes {
+  background-color: rgb(189, 183, 183);
+  position: relative;
+  z-index: 100;
+  display: grid; 
+   grid-template-columns: repeat(2, 1fr); 
+  gap: 10px; 
+  padding: 5px;
+}
+
+  .insidediv>h2 {
   color: white;
   font-size: 20px;
   font-family: "rock salt";
