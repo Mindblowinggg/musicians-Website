@@ -21,6 +21,7 @@ background-image: url("/categoryimg.jpg");
 .insidediv{
   padding: 20px;
   font-size: 15px;
+  
 }
 
 .checkboxes {
@@ -32,6 +33,7 @@ background-image: url("/categoryimg.jpg");
    grid-template-columns: repeat(2, 1fr); 
   gap: 10px; 
   padding: 5px;
+  border-radius: 10px;
 }
 
   .insidediv>h2 {
