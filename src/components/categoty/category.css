@@ -1,12 +1,13 @@
 .categorydiv {
   padding-top: 50px;
-background-image: url("/categoryimg.jpg");
+  background-image: url("/categoryimg.jpg");
   height: 100vh;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
-  &::before { 
+
+  &::before {
     content: '';
     position: absolute;
     top: 0;
@@ -18,10 +19,10 @@ background-image: url("/categoryimg.jpg");
   }
 }
 
-.insidediv{
+.insidediv {
   padding: 20px;
   font-size: 10px;
-  
+
 }
 
 .checkboxes {
@@ -30,15 +31,16 @@ background-image: url("/categoryimg.jpg");
   font-weight: 500;
   font-family: "rock salt";
   z-index: 100;
-  display: grid; 
-   grid-template-columns: repeat(2, 1fr); 
-  gap: 5px; 
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 5px;
   padding: 5px;
   border-radius: 10px;
   letter-spacing: 1px;
 }
 
-  .insidediv>h2 {
+.insidediv>h2 {
+  user-select: none;
   color: white;
   font-size: 20px;
   font-family: "rock salt";
@@ -51,7 +53,7 @@ background-image: url("/categoryimg.jpg");
 
 }
 
-.findbtn{
+.findbtn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -77,34 +79,33 @@ button {
 
 
 @keyframes shake3856 {
- 0% {
-  -webkit-transform: translate(0);
-  transform: translate(0);
- }
+  0% {
+    -webkit-transform: translate(0);
+    transform: translate(0);
+  }
 
- 20% {
-  -webkit-transform: translate(-2px, 2px);
-  transform: translate(-2px, 2px);
- }
+  20% {
+    -webkit-transform: translate(-2px, 2px);
+    transform: translate(-2px, 2px);
+  }
 
- 40% {
-  -webkit-transform: translate(-2px, -2px);
-  transform: translate(-2px, -2px);
- }
+  40% {
+    -webkit-transform: translate(-2px, -2px);
+    transform: translate(-2px, -2px);
+  }
 
- 60% {
-  -webkit-transform: translate(2px, 2px);
-  transform: translate(2px, 2px);
- }
+  60% {
+    -webkit-transform: translate(2px, 2px);
+    transform: translate(2px, 2px);
+  }
 
- 80% {
-  -webkit-transform: translate(2px, -2px);
-  transform: translate(2px, -2px);
- }
+  80% {
+    -webkit-transform: translate(2px, -2px);
+    transform: translate(2px, -2px);
+  }
 
- 100% {
-  -webkit-transform: translate(0);
-  transform: translate(0);
- }
+  100% {
+    -webkit-transform: translate(0);
+    transform: translate(0);
+  }
 }
-
