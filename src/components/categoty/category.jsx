@@ -22,31 +22,29 @@ const Category = () => {
 
   return (
     <div className="categorydiv">
-    <div className="insidediv">
-      <h2>Select Instruments</h2>
-      <div className=" checkboxes">
-        {instrumentsList.map((instrument) => (
-          <Checkbox
-            key={instrument.name}
-            name={instrument.name}
-            label={instrument.label}
-          />
-        ))}
-      </div>
+      <div className="insidediv">
+        <h2>Select Instruments</h2>
+        <div className=" checkboxes">
+          {instrumentsList.map((instrument) => (
+            <Checkbox
+              key={instrument.name}
+              name={instrument.name}
+              label={instrument.label}
+            />
+          ))}
+        </div>
 
-      <h2>Select Location</h2>
-      <div className=" checkboxes">
-        {locationsList.map((instrument) => (
-          <Checkbox
-            key={instrument.name}
-            name={instrument.name}
-            label={instrument.label}
-          />
-        ))}
+        <h2>Select Location</h2>
+        <div className=" checkboxes">
+          {locationsList.map((instrument) => (
+            <Checkbox
+              key={instrument.name}
+              name={instrument.name}
+              label={instrument.label}
+            />
+          ))}
+        </div>
       </div>
-      
-    </div>
-
     </div>
   );
 };
