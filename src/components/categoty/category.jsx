@@ -1,5 +1,5 @@
 import React from "react";
-import "./category.css"
+import "./category.css";
 import Checkbox from "../checkbox"; // सुनिश्चित करें कि यह सही पाथ है
 
 const Category = () => {
@@ -13,19 +13,19 @@ const Category = () => {
   ];
 
   const locationsList = [
-    { name: 'vadodara', label: 'Vadodara' },
-    { name: 'ahmedabad', label: 'Ahmedabad' },
-    { name: 'mumbai', label: 'Mumbai' },
-    { name: 'delhi', label: 'Delhi' },
-    { name: 'bengaluru', label: 'Bengaluru' },
+    { name: "vadodara", label: "Vadodara" },
+    { name: "ahmedabad", label: "Ahmedabad" },
+    { name: "mumbai", label: "Mumbai" },
+    { name: "delhi", label: "Delhi" },
+    { name: "bengaluru", label: "Bengaluru" },
   ];
 
   return (
     <div className="categorydiv">
-      <h2 className="text-xl font-bold mb-4 text-center">Find Musicians</h2>
+      <h2 >Find Musicians</h2>
 
       <h2>Select Instruments</h2>
-      <div className="flex  flex-wrap gap-3 p-6 justify-center items-center border rounded-md">
+      <div className=" checkboxes flex  flex-wrap gap-3 p-6 justify-center items-center border rounded-md">
         {instrumentsList.map((instrument) => (
           <Checkbox
             key={instrument.name}
@@ -35,8 +35,8 @@ const Category = () => {
         ))}
       </div>
 
-      <h2 className="mt-5">Select Location</h2>
-      <div className="flex flex-wrap gap-3 p-6 justify-center items-center border rounded-md">
+      <h2>Select Location</h2>
+      <div className=" checkboxes flex flex-wrap gap-3 p-6 justify-center items-center border rounded-md">
         {locationsList.map((instrument) => (
           <Checkbox
             key={instrument.name}
