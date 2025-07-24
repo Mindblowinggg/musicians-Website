@@ -20,20 +20,22 @@ background-image: url("/categoryimg.jpg");
 
 .insidediv{
   padding: 20px;
-  font-size: 15px;
+  font-size: 10px;
   
 }
 
 .checkboxes {
   background-color: rgba(189, 183, 183, 0.754);
   position: relative;
-  font-weight: 700;
+  font-weight: 500;
+  font-family: "rock salt";
   z-index: 100;
   display: grid; 
    grid-template-columns: repeat(2, 1fr); 
-  gap: 10px; 
+  gap: 5px; 
   padding: 5px;
   border-radius: 10px;
+  letter-spacing: 1px;
 }
 
   .insidediv>h2 {
