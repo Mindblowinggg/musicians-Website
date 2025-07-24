@@ -45,6 +45,9 @@ const Category = () => {
           ))}
         </div>
       </div>
+      <div className="findbtn">
+        <button>Find</button>
+      </div>
     </div>
   );
 };
