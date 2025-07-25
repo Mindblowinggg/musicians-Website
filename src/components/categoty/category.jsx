@@ -67,27 +67,42 @@ const Category = () => {
   }, [selectedState, selectedCountry]); // Depends on both selectedState and selectedCountry
 
   const handleFindClick = () => {
-    if (selectedinstruments.length === 0) {
-      seterrormsg("Please select instruments");
-      return;
-    }
+  if (selectedinstruments.length === 0) {
+    seterrormsg("Please select instruments");
+    return;
+  }
 
-    const filteredArtists = musiciansData.filter((artist) => {
-      const instrumentMatch = selectedinstruments.some((selInst) => {
-        return artist.instrument.includes(selInst);
-      });
-
-      
-      const locationMatch =
-        (!selectedCountry || artist.country === selectedCountry.label) &&
-        (!selectedState || artist.state === selectedState.label) &&
-        (!selectedCity || artist.city === selectedCity.label);
-
-      return instrumentMatch && locationMatch; // Combine instrument and location filters
+  const filteredArtists = musiciansData.filter((artist) => {
+    const instrumentMatch = selectedinstruments.some((selInst) => {
+      return artist.instrument.includes(selInst);
     });
 
-    navigate("/results", { state: { filteredArtists } });
-  };
+    // Helper function to normalize strings for comparison
+    const normalizeString = (str) => {
+      if (!str) return ''; // Handle null or undefined
+      // Convert to lowercase and remove common diacritics (e.g., Iași -> Iasi)
+      return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
+    };
+
+    const artistCountryNormalized = normalizeString(artist.country);
+    const artistStateNormalized = normalizeString(artist.state);
+    const artistCityNormalized = normalizeString(artist.city);
+
+    const selectedCountryNormalized = selectedCountry ? normalizeString(selectedCountry.label) : '';
+    const selectedStateNormalized = selectedState ? normalizeString(selectedState.label) : '';
+    const selectedCityNormalized = selectedCity ? normalizeString(selectedCity.label) : '';
+
+
+    const locationMatch =
+      (!selectedCountry || artistCountryNormalized === selectedCountryNormalized) &&
+      (!selectedState || artistStateNormalized === selectedStateNormalized) &&
+      (!selectedCity || artistCityNormalized === selectedCityNormalized);
+
+    return instrumentMatch && locationMatch; // Combine instrument and location filters
+  });
+
+  navigate("/results", { state: { filteredArtists } });
+};
 
   const instrumentsList = [
     { name: "Guitar", label: "Guitar" },

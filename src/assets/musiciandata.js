@@ -1,8 +1,8 @@
 const musiciansData = [
   {
     id: 1,
-    name: "Aarav Sharma",
-    instrument: ["Guitar", "Vocal"],
+    name: "Aman Kahar",
+    instrument: [ "Vocal"],
     country: "India",
     state: "Gujarat",
     city: "Vadodara",
@@ -527,17 +527,19 @@ const musiciansData = [
     genre: "Soundtrack, Ambient",
     contact: "udit.s@email.com",
   },
-  {
-    id: 49,
-    name: "Vera Platon",
-    instrument: ["Vocal" ,"Keyboard"],
-    country: "Romania",
-    state: "Iași County",
-    city: "Iași",
-    experience: "4 years",
-    genre: "Folk, Pop",
-    contact: "vera.g@email.com",
-  },
+  // musiciansData.js (Corrected entry for Vera Platon)
+{
+  id: 49,
+  name: "Vera Platon",
+  instrument: ["Vocal", "Keyboard"],
+  country: "Romania",
+  state: "Iași County ",
+  city: "Iași",
+  experience: "4 years",
+  genre: "Folk, Pop",
+  contact: "vera.g@email.com",
+},
+  
   {
     id: 50,
     name: "Rishabh Singh",
