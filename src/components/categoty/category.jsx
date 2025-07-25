@@ -4,10 +4,13 @@ import Checkbox from "../checkbox";
 import { useNavigate } from "react-router-dom";
 import musiciansData from "../../assets/musiciandata";
 import Select from "react-select";
+import { Country, State, City } from 'country-state-city';
 
 const Category = () => {
   const [selectedinstruments, setselectedinstruments] = useState([]);
   const [errormsg, seterrormsg] = useState("");
+   const [countryOptions, setCountryOptions] = useState([]);
+  const [selectedCountry, setSelectedCountry] = useState(null);
   const navigate = useNavigate();
 
   const options = [
@@ -15,6 +18,16 @@ const Category = () => {
     { value: "strawberry", label: "Strawberry" },
     { value: "vanilla", label: "Vanilla" },
   ];
+
+  
+  useEffect(() => {
+    const allCountries = Country.getAllCountries();
+    const formattedCountries = allCountries.map(country => ({
+      value: country.isoCode,
+      label: country.name
+    }));
+    setCountryOptions(formattedCountries);
+  }, []); 
 
   const handleFindClick = () => {
     if (selectedinstruments.length === 0) {
@@ -72,7 +85,7 @@ const Category = () => {
 
         {errormsg && <p className="errormsg"> {errormsg}</p>}
       <h2>Select Location</h2>
-      <Select className="searchbar" options={options} isSearchable={true} />
+      <Select className="searchbar" isMulti onChange={setSelectedCountry} options={countryOptions} isSearchable={true} />
       </div>
       
       <div className="findbtn">
