@@ -184,6 +184,7 @@ const Category = () => {
           options={cityOptions}        // *** CORRECTED: Use cityOptions ***
           value={selectedCity}         // *** CORRECTED: Bind selectedCity ***
           isSearchable={true}
+          isMulti
           isClearable={true}
           isDisabled={!selectedState}  // Disable if no state is selected
           // isMulti // Keep this if you want multiple cities to be selected
