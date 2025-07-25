@@ -53,6 +53,26 @@
 
 }
 
+.errormsg {
+ color: white;
+ font-size: 12px;
+ text-align: center;
+ z-index: 100;
+ letter-spacing: 2px;
+ position: relative;
+ font-family: "rock salt";
+ animation: notice 0.5s infinite alternate; /* एनिमेशन लागू करें */
+}
+
+@keyframes notice {
+ 0% {
+  transform: scale(1); /* सामान्य आकार */
+ }
+ 100% {
+  transform: scale(1.2); /* थोड़ा बड़ा आकार */
+ }
+}
+
 .findbtn {
   display: flex;
   justify-content: center;

@@ -1,11 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 
-const Checkbox = ({ name, label }) => {
+const Checkbox = ({ name, label ,onuserchange }) => {
   return (
-    <StyledWrapper>
+    <StyledWrapper >
       <div className="checkbox-wrapper">
-        <input type="checkbox" className="check" id={name} />
+        <input type="checkbox" className="check" id={name} 
+        onChange={(event)=>onuserchange(event.target.id , event.target.checked)}
+         />
         <label htmlFor={name} className="label">
           <svg width={45} height={45} viewBox="0 0 95 95">
             <rect
