@@ -36,14 +36,6 @@ const Category = () => {
     { name: "Violin", label: "Violin" },
   ];
 
-  const locationsList = [
-    { name: "vadodara", label: "Vadodara" },
-    { name: "ahmedabad", label: "Ahmedabad" },
-    { name: "mumbai", label: "Mumbai" },
-    { name: "delhi", label: "Delhi" },
-    { name: "bengaluru", label: "Bengaluru" },
-  ];
-
   const handleinstrumentlist = (name, ischecked) => {
     if (ischecked) {
       setselectedinstruments([...selectedinstruments, name]);
@@ -68,17 +60,6 @@ const Category = () => {
               name={instrument.name}
               label={instrument.label}
               onuserchange={handleinstrumentlist}
-            />
-          ))}
-        </div>
-
-        <h2>Select Location</h2>
-        <div className=" checkboxes">
-          {locationsList.map((instrument) => (
-            <Checkbox
-              key={instrument.name}
-              name={instrument.name}
-              label={instrument.label}
             />
           ))}
         </div>
