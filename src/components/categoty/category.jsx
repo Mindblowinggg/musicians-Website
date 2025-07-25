@@ -12,20 +12,28 @@ const Category = () => {
 
   const handleFindClick = () => {
     if (selectedinstruments.length === 0) {
-      seterrormsg("please select instruments");
-    } else {
-      seterrormsg(""); // Clear any previous error message
-      navigate("/results");
+      seterrormsg("Please select instruments");
+      return;
     }
+
+    const filteredArtists = musiciansData.filter((artist) => {
+      const instrumentMatch = selectedinstruments.some((selInst) => {
+        return artist.instrument.includes(selInst);
+      });
+
+      return instrumentMatch;
+    });
+
+    navigate("/results", { state: { filteredArtists } });
   };
 
   const instrumentsList = [
-    { name: "guitar", label: "Guitar" },
-    { name: "vocal", label: "Vocal" },
-    { name: "drums", label: "Drums" },
-    { name: "keyboard", label: "Keyboard" },
-    { name: "bass", label: "Bass" },
-    { name: "violin", label: "Violin" },
+    { name: "Guitar", label: "Guitar" },
+    { name: "Vocal", label: "Vocal" },
+    { name: "Drums", label: "Drums" },
+    { name: "Keyboard", label: "Keyboard" },
+    { name: "Bass", label: "Bass" },
+    { name: "Violin", label: "Violin" },
   ];
 
   const locationsList = [
