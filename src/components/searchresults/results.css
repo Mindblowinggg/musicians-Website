@@ -33,20 +33,32 @@
   z-index: 1;
 }
 
-.resultdiv h2 {
-  text-align: center;
-  color: #ffffff;
-  margin-bottom: 10px;
+.resultdiv>h2 {
+  font-size: 20px;
   font-family: "rock salt";
-  font-size: 25px;
-  letter-spacing: 4px;
+  letter-spacing: 3px;
+  text-align: center;
+  font-weight: 700;
+  color: white;
   z-index: 100;
-  filter: drop-shadow(10px 10px 1px rgba(0, 0, 0, 0.7));
+  position: fixed;
+  top: 12%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+   background-color: rgba(255, 255, 255, 0.15); /* थोड़ा ट्रांसपेरेंट सफेद बैकग्राउंड */
+  backdrop-filter: blur(10px); /* पीछे के कंटेंट को ब्लर करेगा */
+  -webkit-backdrop-filter: blur(8px); /* Safari के लिए */
+  margin-top: 10px;
+  padding: 10px 0;
+  filter: drop-shadow(5px 4px 2px rgba(56, 52, 52, 0.7));
+
+
 }
 
 .resultdiv ul {
   list-style: none;
-  padding: 20px 50px;
+  padding: 20% 50px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 500px));
   gap: 20px;
@@ -68,7 +80,7 @@
 }
 
 .resultdiv li h3 {
-  color: #E97F18;
+  color: #ffffff;
   margin-top: 0;
   margin-bottom: 10px;
   font-size: 30px;
@@ -78,10 +90,9 @@
 }
 
 .resultdiv li p {
-  color: #000000; /* This color should now apply */
+  color: #000000;
+  /* This color should now apply */
   font-size: 14px;
   margin-top: 20px;
   margin-bottom: 5px;
 }
-
-
