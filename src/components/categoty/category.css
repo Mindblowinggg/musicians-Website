@@ -93,7 +93,29 @@
    left: 50%;
    transform: translateX(-50%);
    position: relative;
+   z-index: 200;
+   font-family: "rock salt";
+   letter-spacing: 3px;
+}
+.searchbar2{
+  
+   background-color: rgba(211, 208, 208, 0.872);
+   width: 80%;
+   left: 50%;
+   transform: translateX(-50%);
+   position: relative;
    z-index: 100;
+   font-family: "rock salt";
+   letter-spacing: 3px;
+}
+.searchbar3{
+ z-index: 50;
+   background-color: rgba(211, 208, 208, 0.872);
+   width: 80%;  
+   left: 50%;
+   transform: translateX(-50%);
+   position: relative;
+
    font-family: "rock salt";
    letter-spacing: 3px;
 }
