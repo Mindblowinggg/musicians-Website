@@ -19,8 +19,10 @@ export const Results = () => {
             {filteredArtists.map((artist) => (
               <li key={artist.id}>
                 <h3>{artist.name}</h3>
-                <p>Instruments: {artist.instrument.join(', ')}</p>
-                {/* Add more artist details as needed */}
+                <p><span>Instruments: </span> {artist.instrument.join(', ')}</p>
+                <p><span>Country:</span>{artist.country}</p>
+                 <p><span>State:</span>{artist.state}</p>
+                  <p><span>City:</span>{artist.city}</p>
               </li>
             ))}
           </ul>

@@ -65,6 +65,7 @@
   font-family: "rock salt";
 }
 
+
 .resultdiv li {
   background-color: #ffffff8c;
   border-radius: 8px;
@@ -93,6 +94,18 @@
   color: #000000;
   /* This color should now apply */
   font-size: 14px;
+  font-weight: 600;
+  letter-spacing:4px;
   margin-top: 20px;
-  margin-bottom: 5px;
+  text-align: center;
+
+}
+.resultdiv li p span{
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing:4px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  filter: drop-shadow(5px 4px 2px rgba(56, 52, 52, 0.7));
 }

@@ -77,9 +77,7 @@ const Category = () => {
         return artist.instrument.includes(selInst);
       });
 
-      // Add location filtering if needed
-      // Make sure your musiciansData has 'country', 'state', 'city' properties
-      // and they match the 'label' from the selected options.
+      
       const locationMatch =
         (!selectedCountry || artist.country === selectedCountry.label) &&
         (!selectedState || artist.state === selectedState.label) &&
