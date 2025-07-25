@@ -3,12 +3,18 @@ import "./category.css";
 import Checkbox from "../checkbox";
 import { useNavigate } from "react-router-dom";
 import musiciansData from "../../assets/musiciandata";
+import Select from "react-select";
 
 const Category = () => {
   const [selectedinstruments, setselectedinstruments] = useState([]);
   const [errormsg, seterrormsg] = useState("");
-
   const navigate = useNavigate();
+
+  const options = [
+    { value: "chocolate", label: "Chocolate" },
+    { value: "strawberry", label: "Strawberry" },
+    { value: "vanilla", label: "Vanilla" },
+  ];
 
   const handleFindClick = () => {
     if (selectedinstruments.length === 0) {
@@ -63,8 +69,12 @@ const Category = () => {
             />
           ))}
         </div>
+
+        {errormsg && <p className="errormsg"> {errormsg}</p>}
+      <h2>Select Location</h2>
+      <Select className="searchbar" options={options} isSearchable={true} />
       </div>
-      {errormsg && <p className="errormsg"> {errormsg}</p>}
+      
       <div className="findbtn">
         <button onClick={handleFindClick}>Find</button>
       </div>

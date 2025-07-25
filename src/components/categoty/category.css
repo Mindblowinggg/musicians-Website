@@ -56,6 +56,7 @@
 .errormsg {
  color: white;
  font-size: 12px;
+ margin-top: 5px;
  text-align: center;
  z-index: 100;
  letter-spacing: 2px;
@@ -78,9 +79,30 @@
   justify-content: center;
   align-items: center;
   z-index: 100;
-  margin-top: 20px;
+  bottom: 0;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 20px;
 }
 
+.searchbar{
+ 
+   background-color: rgba(211, 208, 208, 0.872);
+   width: 80%;
+   left: 50%;
+   transform: translateX(-50%);
+   position: relative;
+   z-index: 100;
+   font-family: "rock salt";
+   letter-spacing: 3px;
+}
+
+.searchbar__control--is-focused {
+  background-color: rgba(230, 230, 230, 0.872);
+  border-color: #007bff;
+  box-shadow: 0 0 0 1px #007bff;
+}
 button {
   height: 3em;
   width: 8em;
