@@ -7,9 +7,11 @@ export const Hero = () => {
     <div className="main">
       <img src="/herotext.png" alt="" />
       <p>Are you an artist?</p>
+      
       <Link to="/category" className="btn">
-        <i className="animation"></i>Find Musicians<i className="animation"></i>
+        <i>Find Musicians</i>
       </Link>
+      
     </div>
   );
 };

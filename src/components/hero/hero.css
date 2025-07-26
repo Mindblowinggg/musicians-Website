@@ -1,11 +1,18 @@
+/* hero.css */
+
+/* Aapka existing @import url... */
+
 .main {
   background-image: url("/guitarimg.jpg");
   height: 100vh;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  position: relative;
-
+  position: relative; 
+  display: flex; 
+  justify-content: center; 
+  align-items: flex-end; 
+  padding-bottom: 20%; 
   &::before {
     content: '';
     position: absolute;
@@ -18,7 +25,7 @@
   }
 }
 
-.main>img {
+.main > img {
   position: absolute;
   z-index: 100;
   top: 20%;
@@ -27,7 +34,7 @@
   filter: drop-shadow(5px 7px 1px rgba(0, 0, 0, 0.7));
 }
 
-.main>p {
+.main > p {
   position: absolute;
   bottom: 30%;
   left: 50%;
@@ -35,7 +42,7 @@
   color: white;
   font-size: 20px;
   z-index: 100;
-  width: 100%;
+  width: 100%; /* Agar yeh paragraph puri width le raha hai, to iski wajah se button center nahi hoga. Ise bhi inspect kar lena.*/
   font-family: "Plus Jakarta Sans", sans-serif;
   text-align: center;
   user-select: none;
@@ -44,11 +51,17 @@
 
 
 .btn {
-  position: absolute;
+  position: absolute; /* Keep this for exact bottom positioning */
+  bottom: 20%; /* Aapki desired bottom position */
   z-index: 100;
-  bottom: 16%;
-  left: 50%;
-  transform: translateX(-50%);
+
+  /* --- REMOVE THESE CONFLICTING/REDUNDANT PROPERTIES --- */
+  /* transform: translateX(-50%); */
+  /* text-align: center; */
+  /* margin-left: 50%; */
+  /* bottom: 0; */
+  /* ---------------------------------------------------- */
+
   outline: 0;
   display: inline-flex;
   align-items: center;
@@ -61,44 +74,30 @@
   box-sizing: border-box;
   padding: 16px 20px;
   color: #fff;
-  font-size: 8px;
+  font-size: 12px;
   font-weight: 500;
-  font-family: "rock salt";
+  font-family: "Plus Jakarta Sans", sans-serif;
   letter-spacing: 1.2px;
   text-transform: uppercase;
   overflow: hidden;
   cursor: pointer;
-  animation: pulse 1.5s infinite alternate;
+  animation: pulse 1.5s infinite alternate; /* Aapka pulse animation */
 }
 
 .btn:hover {
   opacity: .95;
 }
 
-.btn .animation {
-  border-radius: 100%;
-  animation: ripple 0.6s linear infinite;
-}
-
-@keyframes ripple {
-  0% {
-    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.1), 0 0 0 20px rgba(255, 255, 255, 0.1), 0 0 0 40px rgba(255, 255, 255, 0.1), 0 0 0 60px rgba(255, 255, 255, 0.1);
-  }
-
-  100% {
-    box-shadow: 0 0 0 20px rgba(255, 255, 255, 0.1), 0 0 0 40px rgba(255, 255, 255, 0.1), 0 0 0 60px rgba(255, 255, 255, 0.1), 0 0 0 80px rgba(255, 255, 255, 0);
-  }
-}
-
+/* @keyframes pulse will remain the same as you provided for the button */
 @keyframes pulse {
   0% {
-    transform: translateX(-50%) scale(1); 
+    transform: scale(1); /* Remove translateX(-50%) from keyframes as well */
   }
   50% {
-    transform: translateX(-50%) scale(1.06); 
-    box-shadow: 10px 10px 15px rgba(0, 0, 0, .2); 
+    transform: scale(1.06); /* Remove translateX(-50%) from keyframes as well */
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, .2);
   }
   100% {
-    transform: translateX(-50%) scale(1); 
+    transform: scale(1); /* Remove translateX(-50%) from keyframes as well */
   }
 }
