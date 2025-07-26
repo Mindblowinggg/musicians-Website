@@ -5,7 +5,16 @@ import { Link } from "react-router-dom";
 
 export const Results = () => {
   const location = useLocation();
-  const { filteredArtists } = location.state || { filteredArtists: [] };
+  // Destructure both filteredArtists and searchCriteria from location.state
+  const { filteredArtists, searchCriteria } = location.state || {
+    filteredArtists: [],
+    searchCriteria: {},
+  };
+
+  // Get individual location parts, providing empty strings if not present
+  const country = searchCriteria.country || "";
+  const state = searchCriteria.state || "";
+  const city = searchCriteria.city || "";
 
   return (
     <>
@@ -14,26 +23,26 @@ export const Results = () => {
 
       {/* Your existing content div */}
       <div className="resultdiv">
-        <h2>Searched Results</h2>
+        <h2>
+          Searched Results{" "}
+          {(country || state || city) && (
+            <p className="search-location-info">
+              Location: {city && `${city}, `}
+              {state && `${state}, `}
+              {country}
+            </p>
+          )}
+        </h2>
+
         {filteredArtists.length > 0 ? (
           <ul>
             {filteredArtists.map((artist) => (
               <li key={artist.id}>
-                <Link
-                  to={`/artist/${artist.id}`}
-                  style={{ textDecoration: "none", color: "inherit" }}
-                >
+                <Link to={`/artist/${artist.id}`}>
+                  <img className="pfp" src={artist.pfp} alt={artist.name} />
                   <h3>{artist.name}</h3>
                   <p>Instrument: {artist.instrument.join(", ")}</p>
-                  <img
-                    src={artist.pfp}
-                    alt={artist.name}
-                    style={{
-                      width: "50px",
-                      height: "50px",
-                      borderRadius: "50%",
-                    }}
-                  />
+                  <p>Click For More Info</p>
                 </Link>
               </li>
             ))}

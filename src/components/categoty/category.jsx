@@ -11,12 +11,12 @@ const Category = () => {
   const [errormsg, seterrormsg] = useState("");
 
   const [countryOptions, setCountryOptions] = useState([]);
-  const [stateOptions, setStateOptions] = useState([]); // Changed to stateOptions for consistency
-  const [cityOptions, setCityOptions] = useState([]);   // Changed to cityOptions for consistency
+  const [stateOptions, setStateOptions] = useState([]);
+  const [cityOptions, setCityOptions] = useState([]);
 
   const [selectedCountry, setSelectedCountry] = useState(null);
-  const [selectedState, setSelectedState] = useState(null); // Changed to selectedState for consistency
-  const [selectedCity, setSelectedCity] = useState(null);   // Changed to selectedCity for consistency
+  const [selectedState, setSelectedState] = useState(null);
+  const [selectedCity, setSelectedCity] = useState(null);
 
   const navigate = useNavigate();
 
@@ -39,9 +39,9 @@ const Category = () => {
         label: state.name
       }));
       setStateOptions(formattedStates);
-      setSelectedState(null); // Reset selected state when country changes
-      setCityOptions([]);     // Clear city options
-      setSelectedCity(null);  // Reset selected city
+      setSelectedState(null);
+      setCityOptions([]);
+      setSelectedCity(null);
     } else {
       setStateOptions([]);
       setSelectedState(null);
@@ -50,59 +50,68 @@ const Category = () => {
     }
   }, [selectedCountry]);
 
-  // NEW useEffect for Cities - this was missing in your provided code
+  // NEW useEffect for Cities
   useEffect(() => {
-    if (selectedState && selectedCountry) { // Need both country and state to get cities
+    if (selectedState && selectedCountry) {
       const citiesOfSelectedState = City.getCitiesOfState(selectedCountry.value, selectedState.value);
       const formattedCities = citiesOfSelectedState.map(city => ({
-        value: city.name, // Use city name or a unique ID if available
+        value: city.name,
         label: city.name
       }));
       setCityOptions(formattedCities);
-      setSelectedCity(null); // Reset selected city when state changes
+      setSelectedCity(null);
     } else {
       setCityOptions([]);
       setSelectedCity(null);
     }
-  }, [selectedState, selectedCountry]); // Depends on both selectedState and selectedCountry
+  }, [selectedState, selectedCountry]);
 
   const handleFindClick = () => {
-  if (selectedinstruments.length === 0) {
-    seterrormsg("Please select instruments");
-    return;
-  }
-
-  const filteredArtists = musiciansData.filter((artist) => {
-    const instrumentMatch = selectedinstruments.some((selInst) => {
-      return artist.instrument.includes(selInst);
-    });
+    if (selectedinstruments.length === 0) {
+      seterrormsg("Please select instruments");
+      return;
+    }
 
     // Helper function to normalize strings for comparison
     const normalizeString = (str) => {
-      if (!str) return ''; // Handle null or undefined
-      // Convert to lowercase and remove common diacritics (e.g., Iași -> Iasi)
-      return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
+      if (!str) return '';
+      return String(str).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
     };
 
-    const artistCountryNormalized = normalizeString(artist.country);
-    const artistStateNormalized = normalizeString(artist.state);
-    const artistCityNormalized = normalizeString(artist.city);
+    const filteredArtists = musiciansData.filter((artist) => {
+      const instrumentMatch = selectedinstruments.some((selInst) => {
+        return artist.instrument.includes(selInst);
+      });
 
-    const selectedCountryNormalized = selectedCountry ? normalizeString(selectedCountry.label) : '';
-    const selectedStateNormalized = selectedState ? normalizeString(selectedState.label) : '';
-    const selectedCityNormalized = selectedCity ? normalizeString(selectedCity.label) : '';
+      const artistCountryNormalized = normalizeString(artist.country);
+      const artistStateNormalized = normalizeString(artist.state);
+      const artistCityNormalized = normalizeString(artist.city);
 
+      const selectedCountryNormalized = selectedCountry ? normalizeString(selectedCountry.label) : '';
+      const selectedStateNormalized = selectedState ? normalizeString(selectedState.label) : '';
+      const selectedCityNormalized = selectedCity ? normalizeString(selectedCity.label) : '';
 
-    const locationMatch =
-      (!selectedCountry || artistCountryNormalized === selectedCountryNormalized) &&
-      (!selectedState || artistStateNormalized === selectedStateNormalized) &&
-      (!selectedCity || artistCityNormalized === selectedCityNormalized);
+      const locationMatch =
+        (!selectedCountry || artistCountryNormalized === selectedCountryNormalized) &&
+        (!selectedState || artistStateNormalized === selectedStateNormalized) &&
+        (!selectedCity || artistCityNormalized === selectedCityNormalized);
 
-    return instrumentMatch && locationMatch; // Combine instrument and location filters
-  });
+      return instrumentMatch && locationMatch;
+    });
 
-  navigate("/results", { state: { filteredArtists } });
-};
+    // *** IMPORTANT CHANGE HERE ***
+    // Pass the search criteria along with filteredArtists
+    navigate("/results", {
+      state: {
+        filteredArtists: filteredArtists,
+        searchCriteria: {
+          country: selectedCountry ? selectedCountry.label : '',
+          state: selectedState ? selectedState.label : '',
+          city: selectedCity ? selectedCity.label : '',
+        },
+      },
+    });
+  };
 
   const instrumentsList = [
     { name: "Guitar", label: "Guitar" },
@@ -127,19 +136,17 @@ const Category = () => {
     console.log("Selected Instruments:", selectedinstruments);
   }, [selectedinstruments]);
 
-  // Optional: Log selected location for debugging
   useEffect(() => {
     console.log("Selected Country:", selectedCountry?.label);
     console.log("Selected State:", selectedState?.label);
     console.log("Selected City:", selectedCity?.label);
   }, [selectedCountry, selectedState, selectedCity]);
 
-
   return (
     <div className="categorydiv">
       <div className="insidediv">
         <h2>Select Instruments</h2>
-        <div className=" checkboxes">
+        <div className="checkboxes">
           {instrumentsList.map((instrument) => (
             <Checkbox
               key={instrument.name}
@@ -159,34 +166,31 @@ const Category = () => {
           placeholder="Select Country..."
           onChange={setSelectedCountry}
           options={countryOptions}
-          value={selectedCountry} // Bind value
+          value={selectedCountry}
           isSearchable={true}
           isClearable={true}
-          // isMulti // Keep this if you want multiple countries to be selected
         />
         {/* State Select */}
         <Select
           className="searchbar2"
           placeholder="Select State..."
-          onChange={setSelectedState} // *** CORRECTED: Use setSelectedState ***
-          options={stateOptions}       // *** CORRECTED: Use stateOptions ***
-          value={selectedState}        // *** CORRECTED: Bind selectedState ***
+          onChange={setSelectedState}
+          options={stateOptions}
+          value={selectedState}
           isSearchable={true}
           isClearable={true}
-          isDisabled={!selectedCountry} // Disable if no country is selected
-          // isMulti // Keep this if you want multiple states to be selected
+          isDisabled={!selectedCountry}
         />
         {/* City Select */}
         <Select
           className="searchbar3"
           placeholder="Select City..."
-          onChange={setSelectedCity}   // *** CORRECTED: Use setSelectedCity ***
-          options={cityOptions}        // *** CORRECTED: Use cityOptions ***
-          value={selectedCity}         // *** CORRECTED: Bind selectedCity ***
+          onChange={setSelectedCity}
+          options={cityOptions}
+          value={selectedCity}
           isSearchable={true}
           isClearable={true}
-          isDisabled={!selectedState}  // Disable if no state is selected
-          // isMulti // Keep this if you want multiple cities to be selected
+          isDisabled={!selectedState}
         />
       </div>
 
