@@ -13,7 +13,7 @@ export const Results = () => {
 
       {/* Your existing content div */}
       <div className='resultdiv'>
-        <h2>Search Results</h2>
+        <h2>Searched Results</h2>
         {filteredArtists.length > 0 ? (
           <ul>
             {filteredArtists.map((artist) => (
@@ -27,7 +27,7 @@ export const Results = () => {
             ))}
           </ul>
         ) : (
-          <p>No artists found matching your selection.</p>
+          <p className='text-white z-20 text-xl text-center pt-30 '>No artists found matching your selection</p>
         )}
       </div>
     </>
