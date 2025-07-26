@@ -36,9 +36,9 @@ const Navbar = () => {
       {isMenuOpen && (
         <div className="mobile-menu-overlay">
           <div className="mobile-menu-content">
+
             {/* Navigation links within the mobile menu */}
             <Link to="/" className="mobile-nav-link" onClick={toggleMenu}>Home</Link>
-            <Link to="/find-musicians" className="mobile-nav-link" onClick={toggleMenu}>Find Musicians</Link>
             <Link to="/artists" className="mobile-nav-link" onClick={toggleMenu}>Browse Artists</Link>
             <Link to="/about" className="mobile-nav-link" onClick={toggleMenu}>About Us</Link>
             <Link to="/contact" className="mobile-nav-link" onClick={toggleMenu}>Contact Us</Link>

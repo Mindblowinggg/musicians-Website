@@ -5,6 +5,7 @@ import Navbar from "./components/navbar/navbar";
 import Results from "./components/searchresults/result";
 import ArtistDetailPage from "./components/ArtistDetailPage/ArtistDetailPage";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import AboutUs from "./components/aboutus/AboutUs";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/category" element={<Category />} />
         <Route path="/results" element={<Results />} />
          <Route path="/artist/:id" element={<ArtistDetailPage />} />
+         <Route path="/about" element={<AboutUs />} />
       </Routes>
     </Router>
   );
