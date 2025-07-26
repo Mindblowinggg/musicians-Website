@@ -18,6 +18,7 @@ export const Results = () => {
           <ul>
             {filteredArtists.map((artist) => (
               <li key={artist.id}>
+                <div className='pfp'><img className='rounded-4xl' src={artist.pfp} alt="" /></div>
                 <h3>{artist.name}</h3>
                 <p><span>Instruments: </span> {artist.instrument.join(', ')}</p>
                 <p><span>Country:</span>{artist.country}</p>
