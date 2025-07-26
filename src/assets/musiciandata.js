@@ -28,27 +28,14 @@ const musiciansData = [
     experiencedDescription: "Manav Bhatt, a vocalist with 5 years of experience, expertly blends Classical and Bollywood genres. His performances are known for their soulful depth and technical precision, offering a unique and enriching musical journey for listeners. He has a strong command over complex melodies and ragas.",
     readyToHelpDescription: "Manav is available for classical concerts, Bollywood events, private functions, and studio recordings. He is committed to delivering professional and heartfelt vocal performances. Reach out to Manav for a truly authentic musical experience."
   },
+ 
   {
     id: 3,
-    name: "Kunal",
-    instrument: ["Vocal"],
-    country: "India",
-    state: "gujarat",
-    city: "vadodara",
-    experience: "2 years",
-    genre: "bollywood , sufi",
-    contact: "kunal.v@email.com",
-    pfp: "/pfp/kunalpfp.jpg",
-    experiencedDescription: "Kunal, with 2 years of experience, specializes in the soulful fusion of Bollywood and Sufi music. His voice carries emotion and depth, creating an immersive experience for the audience. He has quickly gained recognition for his heartfelt renditions and engaging stage presence.",
-    readyToHelpDescription: "Kunal offers captivating vocal performances for cultural events, private parties, and collaborative projects. He is eager to bring his unique blend of Bollywood and Sufi music to your audience. Connect with Kunal to discuss your musical needs."
-  },
-  {
-    id: 4,
     name: "Vera Platon",
-    instrument: ["vocal"],
-    country: "Romania",
-    state: " Iași County",
-    city: " Iași",
+    instrument: ["Vocal"],
+     country: "Romania",
+    state: "Iași County", // Capital 'I' and 'ș'
+    city: "Iași",  
     experience: "5 years",
     genre: "Jazz, rock",
     contact: "vera.m@email.com",

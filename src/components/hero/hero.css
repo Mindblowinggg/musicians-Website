@@ -54,14 +54,6 @@
   position: absolute; /* Keep this for exact bottom positioning */
   bottom: 20%; /* Aapki desired bottom position */
   z-index: 100;
-
-  /* --- REMOVE THESE CONFLICTING/REDUNDANT PROPERTIES --- */
-  /* transform: translateX(-50%); */
-  /* text-align: center; */
-  /* margin-left: 50%; */
-  /* bottom: 0; */
-  /* ---------------------------------------------------- */
-
   outline: 0;
   display: inline-flex;
   align-items: center;

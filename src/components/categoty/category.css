@@ -6,6 +6,7 @@
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
+  overflow: hidden;
 
   &::before {
     content: '';
@@ -131,6 +132,7 @@ button {
   font-family: "Plus Jakarta Sans", sans-serif;
   letter-spacing: 2px;
   font-weight: 500;
+  cursor: pointer;
  
 }
 

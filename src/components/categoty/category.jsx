@@ -30,7 +30,7 @@ const Category = () => {
     setCountryOptions(formattedCountries);
   }, []);
 
-  // Effect to load states when a country is selected
+  
   useEffect(() => {
     if (selectedCountry) {
       const statesOfSelectedCountry = State.getStatesOfCountry(selectedCountry.value);
@@ -50,7 +50,7 @@ const Category = () => {
     }
   }, [selectedCountry]);
 
-  // NEW useEffect for Cities
+  
   useEffect(() => {
     if (selectedState && selectedCountry) {
       const citiesOfSelectedState = City.getCitiesOfState(selectedCountry.value, selectedState.value);
@@ -72,7 +72,7 @@ const Category = () => {
       return;
     }
 
-    // Helper function to normalize strings for comparison
+    
     const normalizeString = (str) => {
       if (!str) return '';
       return String(str).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
@@ -80,6 +80,7 @@ const Category = () => {
 
     const filteredArtists = musiciansData.filter((artist) => {
       const instrumentMatch = selectedinstruments.some((selInst) => {
+      
         return artist.instrument.includes(selInst);
       });
 
@@ -91,16 +92,15 @@ const Category = () => {
       const selectedStateNormalized = selectedState ? normalizeString(selectedState.label) : '';
       const selectedCityNormalized = selectedCity ? normalizeString(selectedCity.label) : '';
 
+      
       const locationMatch =
-        (!selectedCountry || artistCountryNormalized === selectedCountryNormalized) &&
-        (!selectedState || artistStateNormalized === selectedStateNormalized) &&
-        (!selectedCity || artistCityNormalized === selectedCityNormalized);
+        (!selectedCountry || artistCountryNormalized.includes(selectedCountryNormalized)) &&
+        (!selectedState || artistStateNormalized.includes(selectedStateNormalized)) &&
+        (!selectedCity || artistCityNormalized.includes(selectedCityNormalized));
 
       return instrumentMatch && locationMatch;
     });
 
-    // *** IMPORTANT CHANGE HERE ***
-    // Pass the search criteria along with filteredArtists
     navigate("/results", {
       state: {
         filteredArtists: filteredArtists,
