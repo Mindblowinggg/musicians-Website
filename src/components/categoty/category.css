@@ -131,7 +131,7 @@ button {
   font-family: "Plus Jakarta Sans", sans-serif;
   letter-spacing: 2px;
   font-weight: 500;
-  animation: shake 0.35s linear infinite both;
+ 
 }
 
 .findbtn{
@@ -143,34 +143,3 @@ button {
 }
 
 
-@keyframes shake {
-  0% {
-    -webkit-transform: translate(0);
-    transform: translate(0);
-  }
-
-  20% {
-    -webkit-transform: translate(-2px, 2px);
-    transform: translate(-2px, 2px);
-  }
-
-  40% {
-    -webkit-transform: translate(-2px, -2px);
-    transform: translate(-2px, -2px);
-  }
-
-  60% {
-    -webkit-transform: translate(2px, 2px);
-    transform: translate(2px, 2px);
-  }
-
-  80% {
-    -webkit-transform: translate(2px, -2px);
-    transform: translate(2px, -2px);
-  }
-
-  100% {
-    -webkit-transform: translate(0);
-    transform: translate(0);
-  }
-}
