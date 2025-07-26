@@ -21,7 +21,7 @@
 
 .insidediv {
   padding: 20px;
-  font-size: 10px;
+  font-size: 15px;
 
 }
 
@@ -29,7 +29,7 @@
   background-color: rgba(211, 208, 208, 0.872);
   position: relative;
   font-weight: 500;
-  font-family: "rock salt";
+  font-family: "Plus Jakarta Sans", sans-serif;
   z-index: 100;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -40,10 +40,10 @@
 }
 
 .insidediv>h2 {
-  user-select: none;  
+  user-select: none;
   color: white;
-  font-size: 20px;
-  font-family: "rock salt";
+  font-size: 25px;
+  font-family: "Plus Jakarta Sans", sans-serif;
   margin-bottom: 10px;
   margin-top: 30px;
   text-decoration: underline;
@@ -54,70 +54,64 @@
 }
 
 .errormsg {
- color: white;
- font-size: 12px;
- margin-top: 5px;
- text-align: center;
- z-index: 100;
- letter-spacing: 2px;
- position: relative;
- font-family: "rock salt";
- animation: notice 0.5s infinite alternate; /* एनिमेशन लागू करें */
+  color: white;
+  font-size: 12px;
+  margin-top: 5px;
+  text-align: center;
+  z-index: 100;
+  letter-spacing: 2px;
+  position: relative;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  animation: notice 0.5s infinite alternate;
+
 }
 
 @keyframes notice {
- 0% {
-  transform: scale(1); /* सामान्य आकार */
- }
- 100% {
-  transform: scale(1.2); /* थोड़ा बड़ा आकार */
- }
+  0% {
+    transform: scale(1);
+
+  }
+
+  100% {
+    transform: scale(1.2);
+
+  }
 }
 
-.findbtn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 40;
-  bottom: 10%;
-  position: absolute;
+
+.searchbar {
+
+  background-color: rgba(211, 208, 208, 0.872);
+  width: 80%;
   left: 50%;
   transform: translateX(-50%);
-  
+  position: relative;
+  z-index: 200;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  letter-spacing: 3px;
 }
 
-.searchbar{
- 
-   background-color: rgba(211, 208, 208, 0.872);
-   width: 80%;
-   left: 50%;
-   transform: translateX(-50%);
-   position: relative;
-   z-index: 200;
-   font-family: "rock salt";
-   letter-spacing: 3px;
-}
-.searchbar2{
-  
-   background-color: rgba(211, 208, 208, 0.872);
-   width: 80%;
-   left: 50%;
-   transform: translateX(-50%);
-   position: relative;
-   z-index: 100;
-   font-family: "rock salt";
-   letter-spacing: 3px;
-}
-.searchbar3{
- z-index: 50;
-   background-color: rgba(211, 208, 208, 0.872);
-   width: 80%;  
-   left: 50%;
-   transform: translateX(-50%);
-   position: relative;
+.searchbar2 {
 
-   font-family: "rock salt";
-   letter-spacing: 3px;
+  background-color: rgba(211, 208, 208, 0.872);
+  width: 80%;
+  left: 50%;
+  transform: translateX(-50%);
+  position: relative;
+  z-index: 100;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  letter-spacing: 3px;
+}
+
+.searchbar3 {
+  z-index: 50;
+  background-color: rgba(211, 208, 208, 0.872);
+  width: 80%;
+  left: 50%;
+  transform: translateX(-50%);
+  position: relative;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  letter-spacing: 3px;
 }
 
 .searchbar__control--is-focused {
@@ -125,20 +119,27 @@
   border-color: #007bff;
   box-shadow: 0 0 0 1px #007bff;
 }
+
 button {
   height: 3em;
   width: 8em;
   border: none;
   border-radius: 10em;
   background: #E97F18;
-  font-size: 13px;
+  font-size: 15px;
   color: #ffffff;
-  font-family: "rock salt";
+  font-family: "Plus Jakarta Sans", sans-serif;
   letter-spacing: 2px;
   font-weight: 500;
-  position: relative;
-  z-index: 100;
   animation: shake 0.35s linear infinite both;
+}
+
+.findbtn{
+  position: absolute;
+  left: 50%;
+  z-index: 200;
+  transform: translateX(-50%);
+  bottom: 10%;
 }
 
 
