@@ -8,14 +8,15 @@ const AboutUs = () => {
       <div className="about-us-content">
         <h1 className='heading'>About Dhun Dost</h1>
 
+       
         <p>
-          Welcome to Dhun Dost (धुन दोस्त) - your ultimate companion for connecting with musical talent! We are an innovative platform dedicated to bridging the gap between exceptional musicians and those seeking their unique skills. Whether you're planning an event, looking for a studio collaborator, or simply want to explore the vibrant world of music, Dhun Dost is here to simplify your search.
+          Welcome to Dhun Dost - your ultimate companion for finding musicians in your local area! Our platform is specifically designed to connect you easily with **instrument players and vocalists who can fulfill your musical needs. Whether you're looking for musicians for an event, seeking collaborators for a project, or simply want to discover local musical talent, Dhun Dost simplifies your search.
         </p>
         <p>
-          Our mission is to empower artists by providing them with a prominent stage to showcase their talent, reach new audiences, and find exciting opportunities. For users, we offer a seamless and efficient way to discover verified and talented musicians across various instruments, genres, and locations.
+          Our mission is to empower artists by providing them with a prominent stage to showcase their talent, reach new audiences, and find exciting opportunities right in their vicinity. For users, we offer a seamless and efficient way to discover verified and talented musicians across various instruments, genres, and locations nearest to you.
         </p>
         <p>
-          At Dhun Dost, we believe that every event deserves the perfect sound, and every musician deserves to be heard. Join our community and let us help you find your "Dhun Dost" today!
+          At Dhun Dost, we believe that every event deserves the perfect musician, and every musician deserves access to opportunities nearby. Join our community and let us help you find your "Dhun Dost" today!
         </p>
       </div>
     </div>
