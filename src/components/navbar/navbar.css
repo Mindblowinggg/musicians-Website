@@ -1,32 +1,94 @@
 @import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+/* Main Navbar Container */
 .navbar {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Pushes logo to left, menu icon to right */
   align-items: center;
-  padding: 20px;
-  position: fixed;
+  padding: 20px; /* Increased padding from your original */
+  position: fixed; /* Makes navbar stick to the top */
   width: 100%;
-  background-color: rgba(54, 52, 52, 0.864);
-  backdrop-filter: blur(5px);
-  z-index: 200;
+  background-color: rgba(54, 52, 52, 0.864); /* Your specified background color */
+  backdrop-filter: blur(5px); /* Your specified blur effect */
+  -webkit-backdrop-filter: blur(5px); /* For Safari support */
+  z-index: 200; /* Your specified z-index, ensuring it's on top */
 }
 
-
-
+/* Navbar Logo/Title */
 .navlogo {
+  /* Your specified font styles */
   font-family: "Rock Salt", cursive;
   font-weight: 900;
   font-style: normal;
-  color: #E97F18;
+  color: #E97F18; /* Your specified orange color */
+  /* Ensure the H1 inside also respects this color if it's not overriding */
 }
 
-.menuicon {
+.navlogo h1 {
+  margin: 0; /* Remove default margin from H1 */
+  font-size: 28px; /* Adjust as needed */
+  /* Font styles inherited from .navlogo */
+}
+
+.nav-title-link {
+  text-decoration: none; /* Remove underline from title link */
+  color: inherit; /* Inherit color from .navlogo */
+}
+
+/* Menu Icon (Always visible for mobile-first approach) */
+.menu-icon {
   height: 40px;
   width: 40px;
-  color: #E97F18;
-  display: flex;
+  color: #E97F18; /* Your specified orange color */
+  display: flex; /* Ensures content (icon) is centered */
   justify-content: center;
   align-items: center;
-
+  cursor: pointer; /* Indicates it's clickable */
+  z-index: 1001; /* Higher z-index than overlay to be clickable */
 }
+
+/* Mobile Menu Overlay - Activated when menu is open */
+.mobile-menu-overlay {
+  position: fixed; /* Full screen overlay */
+  top: 80px; 
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 80px); /* Baki screen height ko cover karega */
+  background-color: rgb(49, 48, 48); /* Semi-transparent dark background */
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  z-index: 999; 
+  animation: fadeIn 0.3s ease-out; /* Simple fade-in animation */
+}
+
+.mobile-menu-content {
+  position: fixed;
+  top: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Space between menu items */
+  text-align: center;
+}
+
+.mobile-nav-link {
+  color: #fff; /* White color for links */
+  text-decoration: none;
+  font-size: 24px; /* Larger font for mobile menu */
+  font-weight: 600;
+  padding: 10px 0;
+  transition: color 0.3s ease;
+}
+
+
+
+/* Animation for the overlay */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* No desktop-specific media queries are needed here as per your request,
+   since the `menu-icon` is always displayed and the `nav-links-desktop`
+   section is removed from the HTML. */
