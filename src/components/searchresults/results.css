@@ -1,17 +1,14 @@
-/* results.css */
-
-/* Fixed background image with overlay */
 .result-background-fixed {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-image: url('/resultimg.jpg'); /* Make sure this path is correct */
+  background-image: url('https://images.unsplash.com/photo-1593698054498-56898cbad8af?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGd1aXRhcnxlbnwwfDF8MHx8fDA%3D'); 
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  z-index: -1; /* Puts it behind other content */
+  
 }
 
 .result-background-fixed::before {
@@ -22,13 +19,12 @@
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
-  z-index: 10; /* Above the background image, below content */
+  z-index: 10;
 }
 
 /* Main container for results content */
 .resultdiv {
   position: relative;
-  /* padding-top: 100px; */ /* Removed to allow flexbox vertical centering more effectively */
   max-width: 900px;
   width: 90%; /* Make it responsive */
   margin: 0 auto; /* Center the div itself horizontally */
@@ -41,9 +37,7 @@
   display: flex; /* Enable flexbox for vertical centering of content */
   flex-direction: column; /* Stack children vertically */
   align-items: center; /* Center children horizontally */
-  /* justify-content: center; */ /* Use this only if you want the *entire* content to be centered vertically,
-                                 it might push the fixed header down if content is short.
-                                 Let's comment it out for now to ensure header positioning. */
+  
 }
 
 /* Fixed search results header */
@@ -86,7 +80,6 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid for cards */
   gap: 20px;
-  /* margin-top: 50px; */ /* No need for margin-top as padding takes care of it */
   font-family: "Plus Jakarta Sans", sans-serif;
   width: 100%; /* Take full width of parent flex container */
   box-sizing: border-box; /* Include padding in width */
@@ -95,7 +88,7 @@
 
 /* Individual artist list item */
 .resultdiv li {
-  background-color: #ffffff8c; /* Semi-transparent white background */
+  background-color: #ffffff95; /* Semi-transparent white background */
   border-radius: 8px;
   letter-spacing: 2px; /* Reduced letter-spacing for better readability */
   padding: 20px;
@@ -103,11 +96,6 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   transition: transform 0.2s ease-in-out;
   flex-grow: 1; /* Allow items to grow in flex container if needed */
-}
-
-.resultdiv li:hover {
-  transform: translateY(-5px); /* Lift effect on hover */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 .resultdiv li a {
@@ -119,9 +107,7 @@
 /* Artist name */
 .resultdiv li h3 {
   color: #ffffff;
-  margin-top: 0;
   margin-bottom: 10px;
-  font-size: 30px;
   font-weight: 900;
   filter: drop-shadow(5px 4px 2px rgba(56, 52, 52, 0.7));
 }

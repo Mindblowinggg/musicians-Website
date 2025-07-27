@@ -41,7 +41,7 @@ export const Results = () => {
               <li key={artist.id}>
                 <Link to={`/artist/${artist.id}`}>
                   <img className="pfp" src={artist.pfp} alt={artist.name} />
-                  <h3>{artist.name}</h3>
+                  <h3 >{artist.name}</h3>
                   <p>Instrument: {artist.instrument.join(", ")}</p>
                   <p>Click For More Info</p>
                 </Link>
