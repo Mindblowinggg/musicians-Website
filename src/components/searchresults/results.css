@@ -88,7 +88,7 @@
 
 /* Individual artist list item */
 .resultdiv li {
-  background-color: #ffffff95; /* Semi-transparent white background */
+  background-color: #ffffffb8; /* Semi-transparent white background */
   border-radius: 8px;
   letter-spacing: 2px; /* Reduced letter-spacing for better readability */
   padding: 20px;
@@ -163,7 +163,7 @@
 
 /* "Click For More Info" paragraph with pulse animation */
 .resultdiv li a p:last-of-type {
-  color: #ffffff; /* Changed to orange for prominence */
+  color: #000000; /* Changed to orange for prominence */
   font-weight: bold;
   animation: pulse 1.5s infinite ease-in-out;
   margin-top: 15px; /* Add some space above it */
