@@ -8,77 +8,98 @@
   justify-content: space-between; 
   align-items: center;
   padding: 20px; 
-  position: fixed; /* Makes navbar stick to the top */
+  position: fixed; 
   width: 100%;
-  background-color: rgba(54, 52, 52, 0.864); /* Your specified background color */
-  backdrop-filter: blur(5px); /* Your specified blur effect */
-  -webkit-backdrop-filter: blur(5px); /* For Safari support */
-  z-index: 200; /* Your specified z-index, ensuring it's on top */
+  background-color: rgba(54, 52, 52, 0.864);
+  backdrop-filter: blur(5px); 
+  -webkit-backdrop-filter: blur(5px); 
+  z-index: 200; 
 }
 
-/* Navbar Logo/Title */
+
 .navlogo {
-  /* Your specified font styles */
+  
   font-family: "Rock Salt", cursive;
   font-weight: 900;
   font-style: normal;
-  color: #E97F18; /* Your specified orange color */
-  /* Ensure the H1 inside also respects this color if it's not overriding */
+  color: #E97F18;
 }
 
 .navlogo h1 {
-  margin: 0; /* Remove default margin from H1 */
-  font-size: 28px; /* Adjust as needed */
-  /* Font styles inherited from .navlogo */
+  margin: 0; 
+  font-size: 28px; 
 }
 
 .nav-title-link {
-  text-decoration: none; /* Remove underline from title link */
-  color: inherit; /* Inherit color from .navlogo */
+  text-decoration: none; 
+  color: inherit; 
 }
 
-/* Menu Icon (Always visible for mobile-first approach) */
+.desktop-navlinks{
+  padding-right: 60px;
+  font-size: 20px;
+}
+
+.desktop-navlinks>ul{
+  display: flex;
+  gap: 50px;
+}
+
+.nav-link{
+color: #ffff;
+}
+
+.nav-link:hover{
+  color: #E97F18;
+}
+.nav-link.active-link{
+  color: #E97F18;
+}
+
+
+
+
 .menu-icon {
   height: 40px;
   width: 40px;
-  color: #E97F18; /* Your specified orange color */
-  display: flex; /* Ensures content (icon) is centered */
+  color: #E97F18; 
+  display: none; 
   justify-content: center;
   align-items: center;
-  cursor: pointer; /* Indicates it's clickable */
-  z-index: 1000; /* Higher z-index than overlay to be clickable */
+  cursor: pointer; 
+  z-index: 1000; 
 }
 
-/* Mobile Menu Overlay - Activated when menu is open */
+
 .mobile-menu-overlay {
-  position: fixed; /* Full screen overlay */
+  position: fixed; 
   top: 80px; 
   left: 0;
   width: 100%;
-  height: calc(100vh - 80px); /* Baki screen height ko cover karega */
-  background-color: rgb(49, 48, 48); /* Semi-transparent dark background */
+  height: calc(100vh - 80px);
+  background-color: rgb(49, 48, 48);
   display: flex;
   justify-content:center;
   align-items: center;
   font-family: "Plus Jakarta Sans", sans-serif;
   z-index: 1000; 
-  animation: fadeIn 0.3s ease-out; /* Simple fade-in animation */
+  animation: fadeIn 0.3s ease-out; 
 }
 
 .mobile-menu-content {
   position: fixed;
-  top: 80px;
+  top: 100px;
   display: flex;
   flex-direction: column;
   z-index: 1000;
-  gap: 20px; /* Space between menu items */
+  gap: 20px;
   text-align: center;
 }
 
 .mobile-nav-link {
-  color: #fff; /* White color for links */
+  color: #fff; 
   text-decoration: none;
-  font-size: 24px; /* Larger font for mobile menu */
+  font-size: 24px; 
   font-weight: 600;
   padding: 10px 0;
   z-index: 1000;
@@ -87,13 +108,18 @@
 }
 
 
-
-/* Animation for the overlay */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
 }
 
-/* No desktop-specific media queries are needed here as per your request,
-   since the `menu-icon` is always displayed and the `nav-links-desktop`
-   section is removed from the HTML. */
+
+/* for responsivness */
+@media (min-width:0px) and (max-width:800px) {
+.menu-icon{
+  display: flex;
+}  
+.desktop-navlinks{
+  display: none;
+}
+}

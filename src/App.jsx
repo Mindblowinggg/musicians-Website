@@ -1,4 +1,4 @@
-import Category from "./components/categoty/category";
+import Category from "./components/category/category";
 import Checkbox from "./components/checkbox";
 import Hero from "./components/hero/hero";
 import Navbar from "./components/navbar/navbar";

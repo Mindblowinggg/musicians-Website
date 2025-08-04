@@ -1,13 +1,11 @@
 import React, { useState } from "react";
-import { MdQueueMusic, MdClose } from "react-icons/md"; // Import both icons
-import { Link } from "react-router-dom"; // Import Link for navigation
-import "./navbar.css"; // Ensure your CSS file is correctly linked
+import { MdQueueMusic, MdClose } from "react-icons/md";
+import { NavLink } from "react-router-dom";
+import "./navbar.css";
 
 const Navbar = () => {
-  // State to manage the visibility of the mobile menu
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // Function to toggle the menu open/close
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -16,34 +14,126 @@ const Navbar = () => {
     <div className="navbar">
       {/* Application Logo/Title */}
       <div className="navlogo">
-        {/* Link to home page */}
-        <Link to="/" className="nav-title-link">
+        <NavLink to="/" className="nav-title-link">
           <h1>Dhun Dost</h1>
-        </Link>
+        </NavLink>
       </div>
 
-      {/* Menu Icon - Always visible to toggle the menu */}
+      {/* Desktop Navlinks */}
+      <div className="desktop-navlinks">
+        <ul>
+          <li>
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                isActive ? "nav-link active-link" : "nav-link"
+              }
+            >
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/artists"
+              className={({ isActive }) =>
+                isActive ? "nav-link active-link" : "nav-link"
+              }
+            >
+              Browse Artists
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/about"
+              className={({ isActive }) =>
+                isActive ? "nav-link active-link" : "nav-link"
+              }
+            >
+              About Us
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/contact"
+              className={({ isActive }) =>
+                isActive ? "nav-link active-link" : "nav-link"
+              }
+            >
+              Contact Us
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/register-musician"
+              className={({ isActive }) =>
+                isActive ? "nav-link active-link" : "nav-link"
+              }
+            >
+              Register as Musician
+            </NavLink>
+          </li>
+        </ul>
+      </div>
+
+      {/* Menu Icon for Mobile */}
       <div className="menu-icon" onClick={toggleMenu}>
         {isMenuOpen ? (
-          // Show close icon when menu is open
           <MdClose size={40} className="close-icon" />
         ) : (
-          // Show music queue icon when menu is closed
           <MdQueueMusic size={40} className="open-icon" />
         )}
       </div>
 
+      {/* Mobile Menu Overlay */}
       {isMenuOpen && (
         <div className="mobile-menu-overlay">
           <div className="mobile-menu-content">
-
-            {/* Navigation links within the mobile menu */}
-            <Link to="/" className="mobile-nav-link" onClick={toggleMenu}>Home</Link>
-            <Link to="/artists" className="mobile-nav-link" onClick={toggleMenu}>Browse Artists</Link>
-            <Link to="/about" className="mobile-nav-link" onClick={toggleMenu}>About Us</Link>
-            <Link to="/contact" className="mobile-nav-link" onClick={toggleMenu}>Contact Us</Link>
-            <Link to="/register-musician" className="mobile-nav-link" onClick={toggleMenu}>Register as Musician</Link>
-
+            <NavLink
+              to="/"
+              exact
+              className={({ isActive }) =>
+                isActive ? "nav-link active-link" : "nav-link"
+              }
+              onClick={toggleMenu}
+            >
+              Home
+            </NavLink>
+            <NavLink
+              to="/artists"
+              className={({ isActive }) =>
+                isActive ? "nav-link active-link" : "nav-link"
+              }
+              onClick={toggleMenu}
+            >
+              Browse Artists
+            </NavLink>
+            <NavLink
+              to="/about"
+              className={({ isActive }) =>
+                isActive ? "nav-link active-link" : "nav-link"
+              }
+              onClick={toggleMenu}
+            >
+              About Us
+            </NavLink>
+            <NavLink
+              to="/contact"
+              className={({ isActive }) =>
+                isActive ? "nav-link active-link" : "nav-link"
+              }
+              onClick={toggleMenu}
+            >
+              Contact Us
+            </NavLink>
+            <NavLink
+              to="/register-musician"
+              className={({ isActive }) =>
+                isActive ? "nav-link active-link" : "nav-link"
+              }
+              onClick={toggleMenu}
+            >
+              Register as Musician
+            </NavLink>
           </div>
         </div>
       )}
