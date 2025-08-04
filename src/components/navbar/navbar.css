@@ -35,14 +35,27 @@
   color: inherit; 
 }
 
-.desktop-navlinks{
-  padding-right: 60px;
-  font-size: 20px;
-}
 
 .desktop-navlinks>ul{
   display: flex;
   gap: 50px;
+}
+
+.desktop-navlinks{
+  padding-right: 20px;
+  font-size: 20px;
+}
+@media (min-width:800px) and (max-width:1000px)  {
+  .desktop-navlinks{
+    font-size: 15px;
+    padding-right: 0px;
+  }
+
+  .desktop-navlinks > ul{
+  display: flex;
+  gap: 30px;
+}
+  
 }
 
 .nav-link{

@@ -34,7 +34,7 @@ const Navbar = () => {
           </li>
           <li>
             <NavLink
-              to="/artists"
+              to="/BrowseArtists"
               className={({ isActive }) =>
                 isActive ? "nav-link active-link" : "nav-link"
               }
@@ -99,7 +99,7 @@ const Navbar = () => {
               Home
             </NavLink>
             <NavLink
-              to="/artists"
+              to="/BrowseArtists"
               className={({ isActive }) =>
                 isActive ? "nav-link active-link" : "nav-link"
               }
