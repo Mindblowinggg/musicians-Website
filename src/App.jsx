@@ -7,6 +7,8 @@ import BrowseArtists from "./components/BrowseArtists/BrowseArtists";
 import ArtistDetailPage from "./components/ArtistDetailPage/ArtistDetailPage";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import AboutUs from "./components/aboutus/AboutUs";
+import RegisterMusician from "./components/RegisterMusician/RegisterMusician";
+
 
 function App() {
   return (
@@ -19,6 +21,7 @@ function App() {
         <Route path="/BrowseArtists" element={<BrowseArtists />} />
         <Route path="/artist/:id" element={<ArtistDetailPage />} />
         <Route path="/about" element={<AboutUs />} />
+        <Route path="/register-musician" element={<RegisterMusician />} />
       </Routes>
     </Router>
   );

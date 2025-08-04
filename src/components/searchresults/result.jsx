@@ -1,4 +1,3 @@
-// Results.js
 import React from "react";
 import "./results.css";
 import { useLocation } from "react-router-dom";
@@ -12,17 +11,13 @@ export const Results = () => {
     searchCriteria: {},
   };
 
-  
   const country = searchCriteria.country || "";
   const state = searchCriteria.state || "";
   const city = searchCriteria.city || "";
 
   return (
     <>
-     
       <div className="result-background-fixed"></div>
-
-    
       <div className="resultdiv">
         <h2>
           Searched Results{" "}
@@ -34,7 +29,6 @@ export const Results = () => {
             </p>
           )}
         </h2>
-
         {filteredArtists.length > 0 ? (
           <ul>
             {filteredArtists.map((artist) => (
@@ -49,7 +43,6 @@ export const Results = () => {
             ))}
           </ul>
         ) : (
-          
           <p className="no-results-message">
             No artists found matching your selection
           </p>
