@@ -93,6 +93,8 @@
 
   .filter-section {
     flex-direction: column;
+    width: 80%;
+    margin: 0 auto 40px;
   }
 
   .search-input,
