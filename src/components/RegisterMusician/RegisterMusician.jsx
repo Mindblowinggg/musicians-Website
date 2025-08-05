@@ -1,21 +1,100 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './RegisterMusician.css';
-import { collection, addDoc } from "firebase/firestore"; 
+import { collection, addDoc } from "firebase/firestore";
 import { db } from '../../firebase';
+import Select from 'react-select';
+import { Country, State, City } from 'country-state-city';
+import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 const RegisterMusician = () => {
   const [formData, setFormData] = useState({
     name: '',
-    instrument: '',
-    country: '',
-    state: '',
-    city: '',
+    instrument: [],
     experience: '',
-    genre: '',
+    genre: [],
     contact: '',
-    pfp: '',
     experiencedDescription: '',
   });
+
+  const [pfpFile, setPfpFile] = useState(null);
+  const [uploading, setUploading] = useState(false);
+
+  const [countryOptions, setCountryOptions] = useState([]);
+  const [stateOptions, setStateOptions] = useState([]);
+  const [cityOptions, setCityOptions] = useState([]);
+
+  const [selectedCountry, setSelectedCountry] = useState(null);
+  const [selectedState, setSelectedState] = useState(null);
+  const [selectedCity, setSelectedCity] = useState(null);
+
+  const instrumentsList = [
+    { value: 'Guitar', label: 'Guitar' },
+    { value: 'Vocal', label: 'Vocal' },
+    { value: 'Drums', label: 'Drums' },
+    { value: 'Keyboard', label: 'Keyboard' },
+    { value: 'Bass', label: 'Bass' },
+    { value: 'Violin', label: 'Violin' },
+    { value: 'Flute', label: 'Flute' },
+    { value: 'Saxophone', label: 'Saxophone' },
+    { value: 'Tabla', label: 'Tabla' },
+    { value: 'Sitar', label: 'Sitar' },
+    { value: 'Harmonium', label: 'Harmonium' },
+  ];
+
+  const genreList = [
+    { value: 'Rock', label: 'Rock' },
+    { value: 'Pop', label: 'Pop' },
+    { value: 'Bollywood', label: 'Bollywood' },
+    { value: 'Indie', label: 'Indie' },
+    { value: 'Classical', label: 'Classical' },
+    { value: 'Jazz', label: 'Jazz' },
+    { value: 'Metal', label: 'Metal' },
+    { value: 'Hip Hop', label: 'Hip Hop' },
+    { value: 'Electronic', label: 'Electronic' },
+  ];
+
+  useEffect(() => {
+    const allCountries = Country.getAllCountries();
+    const formattedCountries = allCountries.map((country) => ({
+      value: country.isoCode,
+      label: country.name,
+    }));
+    setCountryOptions(formattedCountries);
+  }, []);
+
+  useEffect(() => {
+    if (selectedCountry) {
+      const statesOfSelectedCountry = State.getStatesOfCountry(selectedCountry.value);
+      const formattedStates = statesOfSelectedCountry.map(state => ({
+        value: state.isoCode,
+        label: state.name
+      }));
+      setStateOptions(formattedStates);
+      setSelectedState(null);
+      setCityOptions([]);
+      setSelectedCity(null);
+    } else {
+      setStateOptions([]);
+      setSelectedState(null);
+      setCityOptions([]);
+      setSelectedCity(null);
+    }
+  }, [selectedCountry]);
+
+  useEffect(() => {
+    if (selectedState && selectedCountry) {
+      const citiesOfSelectedState = City.getCitiesOfState(selectedCountry.value, selectedState.value);
+      const formattedCities = citiesOfSelectedState.map(city => ({
+        value: city.name,
+        label: city.name
+      }));
+      setCityOptions(formattedCities);
+      setSelectedCity(null);
+    } else {
+      setCityOptions([]);
+      setSelectedCity(null);
+    }
+  }, [selectedState, selectedCountry]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -25,35 +104,79 @@ const RegisterMusician = () => {
     }));
   };
 
+  const handleInstrumentChange = (selectedOptions) => {
+    const instruments = selectedOptions ? selectedOptions.map(option => option.value) : [];
+    setFormData(prevState => ({
+      ...prevState,
+      instrument: instruments,
+    }));
+  };
+
+  const handleGenreChange = (selectedOptions) => {
+    const genres = selectedOptions ? selectedOptions.map(option => option.value) : [];
+    setFormData(prevState => ({
+      ...prevState,
+      genre: genres,
+    }));
+  };
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setPfpFile(file);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+    setUploading(true);
+
+    let pfpUrl = '';
+    if (pfpFile) {
+      const storage = getStorage();
+      const storageRef = ref(storage, `profile_pictures/${pfpFile.name}`);
+
+      try {
+        await uploadBytes(storageRef, pfpFile);
+        pfpUrl = await getDownloadURL(storageRef);
+      } catch (e) {
+        console.error("Error uploading file: ", e);
+        alert('Image upload failed. Please try again.');
+        setUploading(false);
+        return;
+      }
+    }
+
     try {
-      const docRef = await addDoc(collection(db, "musicians"), {
+      await addDoc(collection(db, "musicians"), {
         name: formData.name,
-        instrument: formData.instrument.split(',').map(item => item.trim()),
-        country: formData.country,
-        state: formData.state,
-        city: formData.city,
+        instrument: formData.instrument,
+        country: selectedCountry ? selectedCountry.label : '',
+        state: selectedState ? selectedState.label : '',
+        city: selectedCity ? selectedCity.label : '',
         experience: formData.experience,
         genre: formData.genre,
         contact: formData.contact,
-        pfp: formData.pfp,
+        pfp: pfpUrl,
         experiencedDescription: formData.experiencedDescription,
       });
 
-      console.log("Document written with ID: ", docRef.id);
       alert('Registration Successful!');
-      
-      // Form ko reset karein
+
       setFormData({
-        name: '', instrument: '', country: '', state: '', city: '', experience: '', genre: '',
-        contact: '', pfp: '', experiencedDescription: '',
+        name: '', instrument: [], experience: '', genre: [],
+        contact: '', experiencedDescription: '',
       });
+      setSelectedCountry(null);
+      setSelectedState(null);
+      setSelectedCity(null);
+      setPfpFile(null);
 
     } catch (e) {
       console.error("Error adding document: ", e);
       alert('Registration failed. Please try again.');
+    } finally {
+      setUploading(false);
     }
   };
 
@@ -71,23 +194,65 @@ const RegisterMusician = () => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="instrument">Instrument(s) <small>(Comma-separated)</small></label>
-          <input type="text" id="instrument" name="instrument" value={formData.instrument} onChange={handleChange} placeholder="e.g., Vocal, Guitar, Piano" required />
+          <label htmlFor="instrument">Instrument(s)</label>
+          <Select
+            id="instrument"
+            name="instrument"
+            options={instrumentsList}
+            isMulti
+            value={instrumentsList.filter(option => formData.instrument.includes(option.value))}
+            onChange={handleInstrumentChange}
+            placeholder="Select instruments..."
+            className="react-select-container"
+            classNamePrefix="react-select"
+          />
         </div>
 
         <div className="form-group">
           <label htmlFor="country">Country</label>
-          <input type="text" id="country" name="country" value={formData.country} onChange={handleChange} required />
+          <Select
+            id="country"
+            className="react-select-container"
+            classNamePrefix="react-select"
+            placeholder="Select Country..."
+            onChange={setSelectedCountry}
+            options={countryOptions}
+            value={selectedCountry}
+            isSearchable={true}
+            isClearable={true}
+          />
         </div>
-        
+
         <div className="form-group">
           <label htmlFor="state">State</label>
-          <input type="text" id="state" name="state" value={formData.state} onChange={handleChange} required />
+          <Select
+            id="state"
+            className="react-select-container"
+            classNamePrefix="react-select"
+            placeholder="Select State..."
+            onChange={setSelectedState}
+            options={stateOptions}
+            value={selectedState}
+            isSearchable={true}
+            isClearable={true}
+            isDisabled={!selectedCountry}
+          />
         </div>
 
         <div className="form-group">
           <label htmlFor="city">City</label>
-          <input type="text" id="city" name="city" value={formData.city} onChange={handleChange} required />
+          <Select
+            id="city"
+            className="react-select-container"
+            classNamePrefix="react-select"
+            placeholder="Select City..."
+            onChange={setSelectedCity}
+            options={cityOptions}
+            value={selectedCity}
+            isSearchable={true}
+            isClearable={true}
+            isDisabled={!selectedState}
+          />
         </div>
 
         <div className="form-group">
@@ -96,18 +261,36 @@ const RegisterMusician = () => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="genre">Genre(s) <small>(Comma-separated)</small></label>
-          <input type="text" id="genre" name="genre" value={formData.genre} onChange={handleChange} placeholder="e.g., Rock, Bollywood, Indie" required />
+          <label htmlFor="genre">Genre(s)</label>
+          <Select
+            id="genre"
+            name="genre"
+            options={genreList}
+            isMulti
+            value={genreList.filter(option => formData.genre.includes(option.value))}
+            onChange={handleGenreChange}
+            placeholder="Select genres..."
+            className="react-select-container"
+            classNamePrefix="react-select"
+          />
         </div>
 
         <div className="form-group">
           <label htmlFor="contact">Contact Email</label>
           <input type="email" id="contact" name="contact" value={formData.contact} onChange={handleChange} required />
         </div>
-        
+
         <div className="form-group">
-          <label htmlFor="pfp">Profile Picture URL</label>
-          <input type="url" id="pfp" name="pfp" value={formData.pfp} onChange={handleChange} placeholder="e.g., https://example.com/pfp.jpg" required />
+          <label htmlFor="pfp">Profile Picture</label>
+          <input
+            type="file"
+            id="pfp"
+            name="pfp"
+            onChange={handleFileChange}
+            accept="image/*"
+            required
+          />
+          {pfpFile && <p>Selected file: **{pfpFile.name}**</p>}
         </div>
 
         <div className="form-group">
@@ -115,8 +298,8 @@ const RegisterMusician = () => {
           <textarea id="experiencedDescription" name="experiencedDescription" value={formData.experiencedDescription} onChange={handleChange} rows="4" required></textarea>
         </div>
 
-        <button type="submit" className="submit-button">
-          Register
+        <button type="submit" className="submit-button" disabled={uploading}>
+          {uploading ? 'Registering...' : 'Register'}
         </button>
       </form>
     </div>

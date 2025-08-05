@@ -1,112 +1,138 @@
-/* Main container for the registration page */
 .register-musician-container {
-  padding: 120px 20px 40px;
-  max-width: 800px;
-  margin: 0 auto;
-  font-family: "Plus Jakarta Sans", sans-serif;
-  color: #fff;
+  max-width: 700px;
+  margin: auto;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  padding:30px 30px 50px 30px;
+  border-radius: 10px;
+  background-color: #fefefe;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+  color: #333;
 }
 
-/* Page title and subtitle */
 .register-title {
   text-align: center;
-  font-size: 3rem;
-  font-weight: 800;
-  color: #E97F18;
   margin-bottom: 10px;
+  color: #2c3e50;
 }
 
 .register-subtitle {
   text-align: center;
-  font-size: 1rem;
-  color: #ccc;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
+  color: #7f8c8d;
 }
 
-/* Form styling */
 .musician-form {
-  background-color: #1e1e1e;
-  padding: 40px;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  display: grid;
+  gap: 20px;
 }
 
 .form-group {
-  margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
 }
 
 .form-group label {
-  display: block;
-  font-size: 1.1rem;
+  font-weight: bold;
   margin-bottom: 8px;
-  color: #E97F18;
+  color: #34495e;
 }
 
-.form-group label small {
-  color: #aaa;
-  font-weight: normal;
-  margin-left: 5px;
-}
-
-/* Input fields and textarea styling */
-.musician-form input,
-.musician-form textarea {
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="url"],
+.form-group textarea {
   width: 100%;
   padding: 12px;
-  border: 1px solid #444;
-  border-radius: 8px;
-  background-color: #2a2a2a;
-  color: #fff;
-  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
   transition: border-color 0.3s ease;
 }
 
-.musician-form input:focus,
-.musician-form textarea:focus {
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #3498db;
   outline: none;
-  border-color: #E97F18;
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
 }
 
-.musician-form textarea {
+.form-group textarea {
   resize: vertical;
   min-height: 120px;
 }
 
-.musician-form input::placeholder,
-.musician-form textarea::placeholder {
-  color: #888;
+.form-group input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #f0f0f0;
 }
 
-/* Submit button styling */
+.form-group input[type="file"]::-webkit-file-upload-button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.form-group input[type="file"]::-webkit-file-upload-button:hover {
+  background-color: #2980b9;
+}
+
 .submit-button {
-  display: block;
   width: 100%;
   padding: 15px;
+  background-color: #3498db;
+  color: white;
   border: none;
-  border-radius: 8px;
-  background-color: #E97F18;
-  color: #fff;
-  font-size: 1.2rem;
+  border-radius: 5px;
+  font-size: 18px;
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .submit-button:hover {
-  background-color: #d17112;
+  background-color: #2980b9;
 }
 
-/* Responsive design for smaller screens */
-@media (max-width: 600px) {
-  .register-musician-container {
-    padding: 100px 10px 20px;
-  }
+.submit-button:disabled {
+  background-color: #bdc3c7;
+  cursor: not-allowed;
+}
 
-  .register-title {
-    font-size: 2.5rem;
-  }
-  
-  .musician-form {
-    padding: 20px;
-  }
+/* React-Select styling */
+.react-select-container .react-select__control {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  min-height: 44px;
+}
+
+.react-select-container .react-select__control--is-focused {
+  border-color: #3498db;
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+.react-select-container .react-select__multi-value {
+  background-color: #ecf0f1;
+  border-radius: 4px;
+}
+
+.react-select-container .react-select__multi-value__label {
+  color: #2c3e50;
+}
+
+.react-select-container .react-select__multi-value__remove {
+  color: #95a5a6;
+}
+
+.react-select-container .react-select__multi-value__remove:hover {
+  background-color: #c0392b;
+  color: white;
 }
