@@ -4,7 +4,6 @@ import { collection, addDoc } from "firebase/firestore";
 import { db } from '../../firebase';
 import Select from 'react-select';
 import { Country, State, City } from 'country-state-city';
-import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 const RegisterMusician = () => {
   const [formData, setFormData] = useState({
@@ -16,7 +15,6 @@ const RegisterMusician = () => {
     experiencedDescription: '',
   });
 
-  const [pfpFile, setPfpFile] = useState(null);
   const [uploading, setUploading] = useState(false);
 
   const [countryOptions, setCountryOptions] = useState([]);
@@ -119,33 +117,13 @@ const RegisterMusician = () => {
       genre: genres,
     }));
   };
-
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setPfpFile(file);
-    }
-  };
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     setUploading(true);
 
-    let pfpUrl = '';
-    if (pfpFile) {
-      const storage = getStorage();
-      const storageRef = ref(storage, `profile_pictures/${pfpFile.name}`);
-
-      try {
-        await uploadBytes(storageRef, pfpFile);
-        pfpUrl = await getDownloadURL(storageRef);
-      } catch (e) {
-        console.error("Error uploading file: ", e);
-        alert('Image upload failed. Please try again.');
-        setUploading(false);
-        return;
-      }
-    }
+    // Common URL for all profile pictures
+    const pfpUrl = 'https://firebasestorage.googleapis.com/v0/b/musicians-website-9c78b.firebasestorage.app/o/profile_pictures%2Fdefault.jpg?alt=media';
 
     try {
       await addDoc(collection(db, "musicians"), {
@@ -157,7 +135,7 @@ const RegisterMusician = () => {
         experience: formData.experience,
         genre: formData.genre,
         contact: formData.contact,
-        pfp: pfpUrl,
+        pfp: pfpUrl, // Using the common URL here
         experiencedDescription: formData.experiencedDescription,
       });
 
@@ -170,7 +148,6 @@ const RegisterMusician = () => {
       setSelectedCountry(null);
       setSelectedState(null);
       setSelectedCity(null);
-      setPfpFile(null);
 
     } catch (e) {
       console.error("Error adding document: ", e);
@@ -278,19 +255,6 @@ const RegisterMusician = () => {
         <div className="form-group">
           <label htmlFor="contact">Contact Email</label>
           <input type="email" id="contact" name="contact" value={formData.contact} onChange={handleChange} required />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="pfp">Profile Picture</label>
-          <input
-            type="file"
-            id="pfp"
-            name="pfp"
-            onChange={handleFileChange}
-            accept="image/*"
-            required
-          />
-          {pfpFile && <p>Selected file: **{pfpFile.name}**</p>}
         </div>
 
         <div className="form-group">
