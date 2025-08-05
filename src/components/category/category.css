@@ -26,6 +26,9 @@
 }
 
 .checkboxes {
+  width: 50%;
+  left: 50%;
+  transform: translateX(-50%);
   background-color: rgba(211, 208, 208, 0.872);
   position: relative;
   font-weight: 500;
@@ -82,7 +85,7 @@
 .searchbar {
 
   background-color: rgba(211, 208, 208, 0.872);
-  width: 80%;
+  width: 50%;
   left: 50%;
   transform: translateX(-50%);
   position: relative;
@@ -94,7 +97,7 @@
 .searchbar2 {
 
   background-color: rgba(211, 208, 208, 0.872);
-  width: 80%;
+  width: 50%;
   left: 50%;
   transform: translateX(-50%);
   position: relative;
@@ -106,7 +109,7 @@
 .searchbar3 {
   z-index: 50;
   background-color: rgba(211, 208, 208, 0.872);
-  width: 80%;
+  width: 50%;
   left: 50%;
   transform: translateX(-50%);
   position: relative;
