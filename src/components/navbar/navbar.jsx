@@ -44,32 +44,22 @@ const Navbar = () => {
           </li>
           <li>
             <NavLink
-              to="/about"
-              className={({ isActive }) =>
-                isActive ? "nav-link active-link" : "nav-link"
-              }
-            >
-              About Us
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/contact"
-              className={({ isActive }) =>
-                isActive ? "nav-link active-link" : "nav-link"
-              }
-            >
-              Contact Us
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
               to="/register-musician"
               className={({ isActive }) =>
                 isActive ? "nav-link active-link" : "nav-link"
               }
             >
               Register as Musician
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/about"
+              className={({ isActive }) =>
+                isActive ? "nav-link active-link" : "nav-link"
+              }
+            >
+              About Us
             </NavLink>
           </li>
         </ul>
